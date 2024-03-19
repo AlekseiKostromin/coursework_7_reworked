@@ -5,7 +5,6 @@ from django.db import models
 NULLABLE = {'null': True, 'blank': True}
 
 
-# Create your models here.
 class Habit(models.Model):
     class HabitFrequency(models.TextChoices):
         Daily = 'DAILY'
