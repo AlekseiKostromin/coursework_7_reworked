@@ -27,7 +27,8 @@ def habit_scheduler():
 
         current_day = DAYS_OF_WEEK[datetime.today().weekday()]
 
-        habits = Habit.objects.filter(is_pleasant=False, frequency__in=[current_day, 'DAILY'], user__telegram_id__isnull=False)
+        habits = Habit.objects.filter(is_pleasant=False, frequency__in=[current_day, 'DAILY'],
+                                      user__telegram_id__isnull=False)
         for habit in habits:
             if habit.time.strftime('%H:%M') == current_time_plus_5.strftime('%H:%M'):
                 chat_id = habit.user.telegram_id
