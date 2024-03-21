@@ -6,10 +6,10 @@ from habits.models import Habit
 class HabitSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
-        is_pleasant = data.get('is_pleasant')
-        linked_habit = data.get('linked_habit')
-        reward = data.get('reward')
-        duration = data.get('duration')
+        is_pleasant = data.get('is_pleasant') or self.instance.is_pleasant
+        linked_habit = data.get('linked_habit') or self.instance.linked_habit
+        reward = data.get('reward') or self.instance.reward
+        duration = data.get('duration') or self.instance.duration
 
         if not is_pleasant:
             if linked_habit and reward:
